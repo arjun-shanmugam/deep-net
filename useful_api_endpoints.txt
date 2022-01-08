@@ -1,0 +1,46 @@
+*** Potentially useful API endpoints ***
+
+nba_api.stats.endpoints.leaguegamelog.LeagueGameLog()
+-gives 1 row for each game in a specific season
+-includes a column "matchup" containing entries like "TOR vs. DEN" and "DEN @ TOR"
+-includes a column for points scored
+-would have to transform the returned data; the API returns 2 rows for each game
+
+nba_api.stats.endpoints.playergamelog.PlayerGameLog()
+-gives 1 row for every game played by a single player
+-gives that player's box score for that game (same variables we used in the model we submitted)
+
+nba_api.stats.endpoints.boxscoretraditionalv2.BoxScoreTraditionalV2(game_id='some_num').get_data_frames()[0]
+-gives one row for every player's box score in a single game (same variables we used in the model we submitted)
+-would have to add column indicating home/away
+
+nba_api.stats.endpoints.boxscoreusagev2.BoxScoreUsageV2()
+-gives one row for every players box score, but indidividual statistics are expressed as percentages of team totals
+
+nba_api.stats.endpoints.boxscoresummaryv2.BoxScoreSummaryV2()
+-mostly data that wouldn't be useful, but also contains officiating information; officials are assigned to games at 9am every day
+
+nba_api.stats.endpoints.boxscorescoringv2.BoxScoreScoringV2()
+-gives information about how players are scoring: % of points off turnovers, % of 3pm off assists, etc.
+
+nba_api.stats.endpoints.boxscoreplayertrackv2.BoxScorePlayerTrackV2()
+-gives player tracking data
+
+nba_api.stats.endpoints.boxscorematchups.BoxScoreMatchups()
+-gives matchup data: how well did player x shoot while guarded by player y, etc.
+
+nba_api.stats.endpoints.boxscoremiscv2.BoxScoreMiscV2()
+-pts off turnover, opponent points off turnovers, points off second chance, etc. 
+
+
+nba.api.stats.endpoints.boxscorefourfactorsv2.BoxScoreFourFactorsV2()
+-see https://www.basketball-reference.com/about/factors.html
+
+nba.api.stats.endpoints.boxscoredefensive.BoxScoreDefensive()
+-contains defensive stats; some overlap with other box score endpoints
+
+nba.api.stats.endpoints.boxscoreadvancedv2.BoxScoreAdvancedV2()
+-more advanced statistics; some overlap with other box score endpoints
+
+nba_api.stats.endpoints.playerdashboardbylastngames.PlayerDashboardByLastNGames()
+-
