@@ -123,8 +123,8 @@ class Database:
                 PRIMARY KEY (PLAYER_ID, GAME_ID),
                 FOREIGN KEY(GAME_ID) REFERENCES Games(GAME_ID) ON DELETE CASCADE ON UPDATE CASCADE
                 );
-                '''.format(' REAL,\n'.join(utilities.get_stat_categories('BOX SCORE')))
-        print(create_boxscores_table)
+                '''.format(' REAL,\n'.join(get_stat_categories('BOX SCORE')))
+        # print(create_boxscores_table)
         c.execute(create_boxscores_table)
         c.close()
 
@@ -156,7 +156,7 @@ class Database:
             # first, pull any un-pulled games from current season
 
             day = most_recent_game['GAME_DATE'].iloc[0]
-            season = utilities.get_corresponding_nba_season(day)
+            season = get_corresponding_nba_season(day)
             for season_type in season_types:
                 player_data = leaguegamelog.LeagueGameLog(
                     league_id='00',  # '00' indicates NBA

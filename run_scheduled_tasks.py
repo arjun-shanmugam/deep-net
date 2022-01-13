@@ -10,11 +10,12 @@ def daily_tasks(db):
     db.update_boxscores_table()
     send_email(["1"]) #TODO: Make preds, and email them
     git_push_updated_db()
+    print("Pushed to remote")
 
 def run():
     db = Database("data/nbastats.db")
-    schedule.every(5).minutes.do(daily_tasks(db=db)) #9 AM
-    time.sleep(120) #sleep 2 mins (testing purposes)
+    # time.sleep(30) #sleep 30 secs (testing purposes)
+    schedule.every(2).minutes.do(daily_tasks, db) #9 AM
     while True:
         schedule.run_pending()
         time.sleep(1)

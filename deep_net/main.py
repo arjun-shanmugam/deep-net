@@ -9,9 +9,9 @@ from nba_api.stats.static import teams
 from database import Database
 import pandas as pd
 
-db = Database("../data/nbastats.db")
-db.update_games_table()
-db.update_boxscores_table()
+# db = Database("../data/nbastats.db")
+# db.update_games_table()
+# db.update_boxscores_table()
 
 # games = leaguegamelog.LeagueGameLog(
 #                                     direction='DESC',
