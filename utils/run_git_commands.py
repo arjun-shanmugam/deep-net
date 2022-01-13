@@ -1,5 +1,5 @@
 import subprocess as sp
-import datetime
+from datetime import datetime
 
 #Runs all git commands to push the updated DB file to remote repo
 def git_push_updated_db():
