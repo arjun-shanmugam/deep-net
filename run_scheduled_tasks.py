@@ -15,7 +15,8 @@ def daily_tasks(db):
 def run():
     db = Database("data/nbastats.db")
     # time.sleep(30) #sleep 30 secs (testing purposes)
-    schedule.every().day.at("09:00").do(daily_tasks, db) #9 AM
+    schedule.every(2).minutes.do(daily_tasks, db)
+    # schedule.every().day.at("09:00").do(daily_tasks, db) #9 AM
     while True:
         schedule.run_pending()
         time.sleep(1)
