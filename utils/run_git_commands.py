@@ -6,5 +6,7 @@ def git_push_updated_db():
     sp.run(["git", "fetch"])
     sp.run(["git", "pull"])
     sp.run(["git", "add", "data/nbastats.db"])
-    sp.run(["git", "commit", "-m", "Automated DB Update Commit - ".format(datetime.date.today())])
+    now = datetime.now()
+    current_date_and_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+    sp.run(["git", "commit", "-m", "Automated DB Update Commit - {}".format(current_date_and_time)])
     sp.run(["git", "push"])
