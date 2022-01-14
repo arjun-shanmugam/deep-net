@@ -124,7 +124,7 @@ class Database:
                 FOREIGN KEY(GAME_ID) REFERENCES Games(GAME_ID) ON DELETE CASCADE ON UPDATE CASCADE
                 );
                 '''.format(' REAL,\n'.join(get_stat_categories('BOX SCORE')))
-        # print(create_boxscores_table)
+        print(create_boxscores_table)
         c.execute(create_boxscores_table)
         c.close()
 
