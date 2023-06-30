@@ -8,10 +8,20 @@ and the model did very well. However, there were only maybe 60 games used. Want 
 Good source for betting lines to measure performance:
 https://www.reddit.com/r/sportsbook/comments/rslmm3/database_of_nba_spreadsovers_and_almost_all_box/
 
-Steps:
+Steps/Checklist:
 
-- Relearn codebase and make sure things are still working (API, tables, etc)
-- Create comprehensive and easy to use testing functionality (and ensure no data leaks)
-- Load all betting lines data into system
-- Think carefully about how to select hyperparams using val data to avoid upward biasing test acc estimate
-- Get test acc estimate
+- [x] Review codebase
+- [x] Check that APIs, tables still working
+- [ ] Port code to pytorch?
+- [ ] Find previously used hyperparameters
+- [ ] Train a model
+- [ ] Refactor Codebase (make it easy to interact with from commandline w/o code changes)
+- [ ] Create comprehensive and easy to use testing functionality (and ensure no data leaks)
+- [ ] Load all betting lines data into system
+- [ ] Think carefully about how to select hyperparams using val data to avoid upward biasing test acc estimate
+- [ ] Get test acc estimate
+
+Stretch Goals:
+
+- [ ] Investigate more optimal ways to allocate betting money based on confidence
+- [ ] Implement allocation strategy and test
