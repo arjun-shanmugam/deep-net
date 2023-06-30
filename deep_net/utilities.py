@@ -83,6 +83,7 @@ def team_number_id_to_string_id(number_id):
 """
 Gets the nba games scheduled for later on the same day (most of code copied and
 pasted directly from a slack channel with some additions) 
+# TODO: May need to update
 """
 def get_upcoming_nba_games():
     SEASON = '2021-22'
@@ -116,4 +117,4 @@ def get_upcoming_nba_games():
     print(list(games_set))
     return list(games_set)
 
-get_upcoming_nba_games()
+# get_upcoming_nba_games()
