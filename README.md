@@ -12,9 +12,10 @@ Steps/Checklist:
 
 - [x] Review codebase
 - [x] Check that APIs, tables still working
-- [ ] Port code to pytorch?
+- [x] Port code to pytorch?
+- [ ] Dive into data - see what we have and what's missing. What is supposed to be in games_and_players.dta?
 - [ ] Find previously used hyperparameters
-- [ ] Train a model
+- [ ] Train a model and make sure it looks ok.
 - [ ] Refactor Codebase (make it easy to interact with from commandline w/o code changes)
 - [ ] Create comprehensive and easy to use testing functionality (and ensure no data leaks)
 - [ ] Load all betting lines data into system
@@ -25,3 +26,4 @@ Stretch Goals:
 
 - [ ] Investigate more optimal ways to allocate betting money based on confidence
 - [ ] Implement allocation strategy and test
+- [ ] Automate prediction serving (loading lines automatically)

@@ -1,8 +1,10 @@
 import pandas as pd
 import numpy as np
 from arjunmodel.load_and_preprocess import df_to_dataset
+import os
+import torch
 
-def preprocess(for_testing=False):
+def preprocess(for_testing=False, use_torch=True):
     if for_testing:
         path_to_data = "../../april-2019-games-with-spreads/Sheet 2-Table 1.csv"
         df = pd.read_csv(path_to_data)
@@ -12,6 +14,9 @@ def preprocess(for_testing=False):
         ids, team_map = create_unique_team_year_id(years, months,
                 home_ids, away_ids)
         df_labels = df.pop("labels")
+        if use_torch:
+            # return items as tensors
+            return torch.tensor(df.to_numpy()), torch.tensor(df_labels.to_numpy()), torch.tensor(ids), team_map, torch.tensor(spreads)
         return df.to_numpy(), df_labels.to_numpy(), ids, team_map, spreads
     else:
         train, test = load_df()
@@ -35,7 +40,9 @@ def preprocess(for_testing=False):
         test_features = test
 
         # train_ds, test_ds = df_to_dataset(train), df_to_dataset(test)
-        
+        if use_torch:
+            # return items as tensors
+            return torch.tensor(train_features.to_numpy()), torch.tensor(train_labels.to_numpy()), torch.tensor(test_features.to_numpy()), torch.tensor(test_labels.to_numpy()), torch.tensor(train_ids), torch.tensor(test_ids), team_map        
         return train_features.to_numpy(), train_labels.to_numpy(), test_features.to_numpy(), test_labels.to_numpy(), train_ids, test_ids, team_map
 
 def create_unique_team_year_id(years, months, team_home_ids, team_away_ids, team_map = None):
@@ -67,7 +74,9 @@ def create_unique_team_year_id(years, months, team_home_ids, team_away_ids, team
 Loads a stata file as a pd.DataFrame, designates a labels column, and splits into train and test.
 """
 def load_df():
-    path_to_data = "../../cleaned_data/games_and_players.dta"
+    # print current directory
+    print(os.getcwd())
+    path_to_data = "data/cleaned_data/games_and_players.dta"
     df = pd.read_stata(path_to_data)
     df = df.rename(columns={'point_differential': 'labels'})  # rename point_differential to target (labels)
     train = df.loc[(7 < df['month']) | (df['month'] <= 3)]  # train on games from 2017 and earlier (18779/23597 games)
