@@ -90,7 +90,6 @@ def test(model, test_features, test_labels, test_ids, batch_size=32, return_pred
     :param train_labels: train labels (all labels for training) of shape (num_labels,)
     :return: avg loss
     """
-    #TODO: Fill in
     total_loss = 0
     total_l1_error = 0
     total_l2_error = 0
